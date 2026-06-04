@@ -1,0 +1,64 @@
+{
+  "Actor": {
+    "types": [
+      "character",
+      "npc"
+    ],
+    "character": {
+      "stats": {
+        "patience": 1,
+        "cunning": 1,
+        "generosity": 0,
+        "selfishness": 0,
+        "demonstration": 0,
+        "observation": 0,
+        "vigor": 1,
+        "grace": 1,
+        "courage": 0,
+        "wrath": 0,
+        "endurance": 0,
+        "defiance": 0,
+        "understanding": 1,
+        "persuasion": 1,
+        "purity": 0,
+        "corruption": 0,
+        "honesty": 0,
+        "deceit": 0
+      },
+      "profession": "",
+      "notes": "",
+      "specialties": {
+        "one": "",
+        "two": "",
+        "three": ""
+      },
+      "modifiers": {
+        "value": 0,
+        "calledShotValue": 10,
+        "calledShotActive": false
+      }
+    },
+    "npc": {
+      "npcStats": {
+        "s1": { "name": "Stat 1", "value": 0 },
+        "s2": { "name": "Stat 2", "value": 0 },
+        "s3": { "name": "Stat 3", "value": 0 },
+        "s4": { "name": "Stat 4", "value": 0 },
+        "s5": { "name": "Stat 5", "value": 0 },
+        "s6": { "name": "Stat 6", "value": 0 },
+        "s7": { "name": "Stat 7", "value": 0 },
+        "s8": { "name": "Stat 8", "value": 0 },
+        "s9": { "name": "Stat 9", "value": 0 },
+        "s10": { "name": "Stat 10", "value": 0 }
+      }
+    }
+  },
+  "Item": {
+    "types": [
+      "item"
+    ],
+    "item": {
+      "description": ""
+    }
+  }
+}

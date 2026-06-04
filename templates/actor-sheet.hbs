@@ -1,0 +1,205 @@
+<form class="{{cssClass}} adw-sheet" autocomplete="off">
+
+  <header class="sheet-header-new">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+
+    <div class="header-details">
+      <input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'ADW.Name'}}" class="charname-new"/>
+
+      <div class="status-line">
+        <div class="profession-container">
+          <span class="profession-select {{#if system.profession}}has-prof{{/if}}">
+            {{#if system.profession}}{{professionLabel}}{{else}}{{localize 'ADW.ChooseProfession'}}{{/if}}
+          </span>
+          {{#if system.profession}}
+            <span class="profession-delete" title="Remove Profession">x</span>
+          {{/if}}
+        </div>
+
+        <div class="divider-v"></div>
+
+        <div class="modifiers-bar">
+          <div class="mod-group">
+            {{#numLoopRange -3 3}}
+              <span class="mod-checkbox {{#if (eq ../system.modifiers.value value)}}selected{{/if}}" data-value="{{value}}">
+                {{#if (gt value 0)}}+{{/if}}{{value}}
+              </span>
+            {{/numLoopRange}}
+          </div>
+
+          <div class="divider-v"></div>
+
+          <div class="target-group">
+            <span class="target-icon {{#if system.modifiers.calledShotActive}}active{{/if}}" title="{{localize 'ADW.CalledShot'}}">⌖</span>
+            <span class="target-value" title="Left click +, Right click -">
+              {{#if system.modifiers.calledShotValue}}{{system.modifiers.calledShotValue}}{{else}}10{{/if}}
+            </span>
+          </div>
+
+          <div class="divider-v"></div>
+
+          <div class="points-display">
+            {{totalPoints}}
+          </div>
+        </div>
+      </div>
+
+      <textarea name="system.notes" class="notes-area" placeholder="{{localize 'ADW.NotesPlaceholder'}}">{{system.notes}}</textarea>
+    </div>
+  </header>
+
+  <div class="main-container">
+
+    <section class="ore-section">
+      
+      <div class="stat-row">
+        <label class="label-left rollable {{isUnderlined 'generosity' underlinedStats}} {{#if (eq selected.quality 'generosity')}}selected{{/if}} {{#if (and selected.quality (ne selected.quality 'generosity'))}}dimmed{{/if}}" data-prop="generosity">
+          {{localize 'ADW.Stats.Generosity'}}
+          {{#if idSide}}<span class="quality-hint active">{{localize (concat 'ADW.Hints.Generosity.' idSide)}}</span>{{/if}}
+        </label>
+        
+        <div class="dots-container-stack">
+          <div class="dots-area dots-left clickable" data-prop="generosity" data-pair="selfishness">{{drawDots system.stats.generosity}}</div>
+          <div class="dots-area dots-right clickable" data-prop="selfishness" data-pair="generosity">{{drawDots system.stats.selfishness}}</div>
+        </div>
+
+        <label class="label-right rollable {{isUnderlined 'selfishness' underlinedStats}} {{#if (eq selected.quality 'selfishness')}}selected{{/if}} {{#if (and selected.quality (ne selected.quality 'selfishness'))}}dimmed{{/if}}" data-prop="selfishness">
+          {{localize 'ADW.Stats.Selfishness'}}
+          {{#if idSide}}<span class="quality-hint active">{{localize (concat 'ADW.Hints.Selfishness.' idSide)}}</span>{{/if}}
+        </label>
+      </div>
+
+      <div class="identity-row">
+        <h2 class="identity-label label-left rollable {{isUnderlined 'patience' underlinedStats}} {{#if (eq selected.id 'patience')}}selected{{/if}} {{#if (and selected.id (ne selected.id 'patience'))}}dimmed{{/if}}" data-prop="patience">
+          {{localize 'ADW.Stats.Patience'}}
+        </h2>
+        <div class="dots-container-stack">
+          <div class="dots-area dots-left clickable" data-prop="patience" data-pair="cunning">{{drawDots system.stats.patience}}</div>
+          <div class="dots-area dots-right clickable" data-prop="cunning" data-pair="patience">{{drawDots system.stats.cunning}}</div>
+        </div>
+        <h2 class="identity-label label-right rollable {{isUnderlined 'cunning' underlinedStats}} {{#if (eq selected.id 'cunning')}}selected{{/if}} {{#if (and selected.id (ne selected.id 'cunning'))}}dimmed{{/if}}" data-prop="cunning">
+          {{localize 'ADW.Stats.Cunning'}}
+        </h2>
+      </div>
+
+      <div class="stat-row">
+        <label class="label-left rollable {{isUnderlined 'demonstration' underlinedStats}} {{#if (eq selected.quality 'demonstration')}}selected{{/if}} {{#if (and selected.quality (ne selected.quality 'demonstration'))}}dimmed{{/if}}" data-prop="demonstration">
+          {{localize 'ADW.Stats.Demonstration'}}
+          {{#if idSide}}<span class="quality-hint active">{{localize (concat 'ADW.Hints.Demonstration.' idSide)}}</span>{{/if}}
+        </label>
+        <div class="dots-container-stack">
+          <div class="dots-area dots-left clickable" data-prop="demonstration" data-pair="observation">{{drawDots system.stats.demonstration}}</div>
+          <div class="dots-area dots-right clickable" data-prop="observation" data-pair="demonstration">{{drawDots system.stats.observation}}</div>
+        </div>
+        <label class="label-right rollable {{isUnderlined 'observation' underlinedStats}} {{#if (eq selected.quality 'observation')}}selected{{/if}} {{#if (and selected.quality (ne selected.quality 'observation'))}}dimmed{{/if}}" data-prop="observation">
+          {{localize 'ADW.Stats.Observation'}}
+          {{#if idSide}}<span class="quality-hint active">{{localize (concat 'ADW.Hints.Observation.' idSide)}}</span>{{/if}}
+        </label>
+      </div>
+    </section>
+
+    <hr class="noir-divider">
+
+    <section class="ore-section">
+      <div class="stat-row">
+        <label class="label-left rollable {{isUnderlined 'courage' underlinedStats}} {{#if (eq selected.quality 'courage')}}selected{{/if}} {{#if (and selected.quality (ne selected.quality 'courage'))}}dimmed{{/if}}" data-prop="courage">
+          {{localize 'ADW.Stats.Courage'}}
+          {{#if idSide}}<span class="quality-hint active">{{localize (concat 'ADW.Hints.Courage.' idSide)}}</span>{{/if}}
+        </label>
+        <div class="dots-container-stack">
+          <div class="dots-area dots-left clickable" data-prop="courage" data-pair="wrath">{{drawDots system.stats.courage}}</div>
+          <div class="dots-area dots-right clickable" data-prop="wrath" data-pair="courage">{{drawDots system.stats.wrath}}</div>
+        </div>
+        <label class="label-right rollable {{isUnderlined 'wrath' underlinedStats}} {{#if (eq selected.quality 'wrath')}}selected{{/if}} {{#if (and selected.quality (ne selected.quality 'wrath'))}}dimmed{{/if}}" data-prop="wrath">
+          {{localize 'ADW.Stats.Wrath'}}
+          {{#if idSide}}<span class="quality-hint active">{{localize (concat 'ADW.Hints.Wrath.' idSide)}}</span>{{/if}}
+        </label>
+      </div>
+
+      <div class="identity-row">
+        <h2 class="identity-label label-left rollable {{isUnderlined 'vigor' underlinedStats}} {{#if (eq selected.id 'vigor')}}selected{{/if}} {{#if (and selected.id (ne selected.id 'vigor'))}}dimmed{{/if}}" data-prop="vigor">
+          {{localize 'ADW.Stats.Vigor'}}
+        </h2>
+        <div class="dots-container-stack">
+          <div class="dots-area dots-left clickable" data-prop="vigor" data-pair="grace">{{drawDots system.stats.vigor}}</div>
+          <div class="dots-area dots-right clickable" data-prop="grace" data-pair="vigor">{{drawDots system.stats.grace}}</div>
+        </div>
+        <h2 class="identity-label label-right rollable {{isUnderlined 'grace' underlinedStats}} {{#if (eq selected.id 'grace')}}selected{{/if}} {{#if (and selected.id (ne selected.id 'grace'))}}dimmed{{/if}}" data-prop="grace">
+          {{localize 'ADW.Stats.Grace'}}
+        </h2>
+      </div>
+
+      <div class="stat-row">
+        <label class="label-left rollable {{isUnderlined 'endurance' underlinedStats}} {{#if (eq selected.quality 'endurance')}}selected{{/if}} {{#if (and selected.quality (ne selected.quality 'endurance'))}}dimmed{{/if}}" data-prop="endurance">
+          {{localize 'ADW.Stats.Endurance'}}
+          {{#if idSide}}<span class="quality-hint active">{{localize (concat 'ADW.Hints.Endurance.' idSide)}}</span>{{/if}}
+        </label>
+        <div class="dots-container-stack">
+          <div class="dots-area dots-left clickable" data-prop="endurance" data-pair="defiance">{{drawDots system.stats.endurance}}</div>
+          <div class="dots-area dots-right clickable" data-prop="defiance" data-pair="endurance">{{drawDots system.stats.defiance}}</div>
+        </div>
+        <label class="label-right rollable {{isUnderlined 'defiance' underlinedStats}} {{#if (eq selected.quality 'defiance')}}selected{{/if}} {{#if (and selected.quality (ne selected.quality 'defiance'))}}dimmed{{/if}}" data-prop="defiance">
+          {{localize 'ADW.Stats.Defiance'}}
+          {{#if idSide}}<span class="quality-hint active">{{localize (concat 'ADW.Hints.Defiance.' idSide)}}</span>{{/if}}
+        </label>
+      </div>
+    </section>
+
+    <hr class="noir-divider">
+
+    <section class="ore-section">
+      <div class="stat-row">
+        <label class="label-left rollable {{isUnderlined 'purity' underlinedStats}} {{#if (eq selected.quality 'purity')}}selected{{/if}} {{#if (and selected.quality (ne selected.quality 'purity'))}}dimmed{{/if}}" data-prop="purity">
+          {{localize 'ADW.Stats.Purity'}}
+          {{#if idSide}}<span class="quality-hint active">{{localize (concat 'ADW.Hints.Purity.' idSide)}}</span>{{/if}}
+        </label>
+        <div class="dots-container-stack">
+          <div class="dots-area dots-left clickable" data-prop="purity" data-pair="corruption">{{drawDots system.stats.purity}}</div>
+          <div class="dots-area dots-right clickable" data-prop="corruption" data-pair="purity">{{drawDots system.stats.corruption}}</div>
+        </div>
+        <label class="label-right rollable {{isUnderlined 'corruption' underlinedStats}} {{#if (eq selected.quality 'corruption')}}selected{{/if}} {{#if (and selected.quality (ne selected.quality 'corruption'))}}dimmed{{/if}}" data-prop="corruption">
+          {{localize 'ADW.Stats.Corruption'}}
+          {{#if idSide}}<span class="quality-hint active">{{localize (concat 'ADW.Hints.Corruption.' idSide)}}</span>{{/if}}
+        </label>
+      </div>
+
+      <div class="identity-row">
+        <h2 class="identity-label label-left rollable {{isUnderlined 'understanding' underlinedStats}} {{#if (eq selected.id 'understanding')}}selected{{/if}} {{#if (and selected.id (ne selected.id 'understanding'))}}dimmed{{/if}}" data-prop="understanding">
+          {{localize 'ADW.Stats.Understanding'}}
+        </h2>
+        <div class="dots-container-stack">
+          <div class="dots-area dots-left clickable" data-prop="understanding" data-pair="persuasion">{{drawDots system.stats.understanding}}</div>
+          <div class="dots-area dots-right clickable" data-prop="persuasion" data-pair="understanding">{{drawDots system.stats.persuasion}}</div>
+        </div>
+        <h2 class="identity-label label-right rollable {{isUnderlined 'persuasion' underlinedStats}} {{#if (eq selected.id 'persuasion')}}selected{{/if}} {{#if (and selected.id (ne selected.id 'persuasion'))}}dimmed{{/if}}" data-prop="persuasion">
+          {{localize 'ADW.Stats.Persuasion'}}
+        </h2>
+      </div>
+
+      <div class="stat-row">
+        <label class="label-left rollable {{isUnderlined 'honesty' underlinedStats}} {{#if (eq selected.quality 'honesty')}}selected{{/if}} {{#if (and selected.quality (ne selected.quality 'honesty'))}}dimmed{{/if}}" data-prop="honesty">
+          {{localize 'ADW.Stats.Honesty'}}
+          {{#if idSide}}<span class="quality-hint active">{{localize (concat 'ADW.Hints.Honesty.' idSide)}}</span>{{/if}}
+        </label>
+        <div class="dots-container-stack">
+          <div class="dots-area dots-left clickable" data-prop="honesty" data-pair="deceit">{{drawDots system.stats.honesty}}</div>
+          <div class="dots-area dots-right clickable" data-prop="deceit" data-pair="honesty">{{drawDots system.stats.deceit}}</div>
+        </div>
+        <label class="label-right rollable {{isUnderlined 'deceit' underlinedStats}} {{#if (eq selected.quality 'deceit')}}selected{{/if}} {{#if (and selected.quality (ne selected.quality 'deceit'))}}dimmed{{/if}}" data-prop="deceit">
+          {{localize 'ADW.Stats.Deceit'}}
+          {{#if idSide}}<span class="quality-hint active">{{localize (concat 'ADW.Hints.Deceit.' idSide)}}</span>{{/if}}
+        </label>
+      </div>
+    </section>
+
+    <section class="specialties-section">
+      <h1 class="specialties-header">{{localize 'ADW.Specialties'}}</h1>
+      <div class="specialties-grid">
+        <input type="text" name="system.specialties.one" value="{{system.specialties.one}}" placeholder="{{localize 'ADW.Specialty'}} 1" />
+        <input type="text" name="system.specialties.two" value="{{system.specialties.two}}" placeholder="{{localize 'ADW.Specialty'}} 2" />
+        <input type="text" name="system.specialties.three" value="{{system.specialties.three}}" placeholder="{{localize 'ADW.Specialty'}} 3" />
+      </div>
+    </section>
+
+  </div>
+</form>

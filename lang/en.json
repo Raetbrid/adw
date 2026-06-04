@@ -1,0 +1,80 @@
+{
+  "ADW": {
+    "Name": "Name",
+    "ChooseProfession": "Profession...",
+    "NotesPlaceholder": "secrets and notes",
+    "Specialties": "SPECIALTIES",
+    "Specialty": "Specialty",
+    "CalledShot": "Called Shot",
+    "Stats": {
+      "Patience": "PATIENCE",
+      "Cunning": "CUNNING",
+      "Generosity": "Generosity",
+      "Selfishness": "Selfishness",
+      "Demonstration": "Demonstration",
+      "Observation": "Observation",
+      "Vigor": "VIGOR",
+      "Grace": "GRACE",
+      "Courage": "Courage",
+      "Wrath": "Wrath",
+      "Endurance": "Endurance",
+      "Defiance": "Defiance",
+      "Understanding": "UNDERSTANDING",
+      "Persuasion": "PERSUASION",
+      "Purity": "Purity",
+      "Corruption": "Corruption",
+      "Honesty": "Honesty",
+      "Deceit": "Deceit"
+    },
+    "Hints": {
+      "Generosity": { "Left": "Status and resources", "Right": "Payoffs and bribes" },
+      "Selfishness": { "Left": "Forgery, graft, embezzlement", "Right": "Steals cars, pick locks" },
+      "Demonstration": { "Left": "Education and knowledge", "Right": "Quick fixes, jury rigging" },
+      "Observation": { "Left": "Reconstruct a crime scene", "Right": "Spot an ambush" },
+      "Courage": { "Left": "Fair fight, fists", "Right": "Fair fight, guns" },
+      "Wrath": { "Left": "Beat on the inferior", "Right": "Shoot the unarmed" },
+      "Endurance": { "Left": "Marathon run, hold a pin", "Right": "Car chase, balancing" },
+      "Defiance": { "Left": "Smash obstacles", "Right": "Avoid or escape" },
+      "Purity": { "Left": "See someone’s best side", "Right": "Persuade through decency" },
+      "Corruption": { "Left": "Comprehend devious motives", "Right": "Persuade with sin" },
+      "Honesty": { "Left": "Find flaws in true statements", "Right": "Tell the truth convincingly" },
+      "Deceit": { "Left": "See through lies", "Right": "Tell lies" }
+    },
+    "Professions": {
+      "DialogTitle": "Choose Profession",
+      "Select": "Select",
+      "ACADEMIC": { 
+        "Name": "Academic", 
+        "Desc": "Someone who relies on intellect. Often having social connections and surprising resources—often not their own. Can be an educator, researcher, teacher, inventor, or philanthropist." 
+      },
+      "DETECTIVE": { 
+        "Name": "Detective", 
+        "Desc": "Private eyes, police detectives, journalists, and spies. They excel at gathering information through a combination of skepticism and open-mindedness." 
+      },
+      "DEFENDER": { 
+        "Name": "Defender", 
+        "Desc": "A bodyguard, bouncer, or anyone providing protection. Most often a police officer or a security guard." 
+      },
+      "THUG": { 
+        "Name": "Thug", 
+        "Desc": "Some people enjoy hurting others. They are often disliked, which means they have to develop some instincts to help them ooze out of the trouble. Boxers, enforcers, hitmen, and various malicious crooks." 
+      },
+      "INGENUE": { 
+        "Name": "Ingenue", 
+        "Desc": "Naive and simple. Anyone who believes in truth and virtue and strives for ultimate justice. Journalists with convictions, ministers, or political organizers." 
+      },
+      "FEMME_FATALE": { 
+        "Name": "Femme Fatale", 
+        "Desc": "Someone who excels at manipulating others' emotions to exploit their weaknesses. Con artists and criminal geniuses." 
+      }
+    },
+    "Roll": {
+      "NoMatches": "No matches found",
+      "Penalty": "(-1 for called)",
+      "NoDiceWarning": "Not enough dice to roll!"
+    },
+    "Notifications": {
+      "LimitReached": "Limit reached: max 5 per stat or 7 per pair."
+    }
+  }
+}

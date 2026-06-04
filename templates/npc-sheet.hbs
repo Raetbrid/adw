@@ -1,0 +1,27 @@
+<form class="{{cssClass}} adw-npc-sheet" autocomplete="off">
+  <header class="sheet-header-new">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" />
+    <div class="header-details">
+        <input name="name" type="text" value="{{actor.name}}" placeholder="NPC Name" class="charname-new"/>
+        <div style="font-family: 'Marcellus', serif; font-style: italic; opacity: 0.7;">Non-Player Character</div>
+    </div>
+  </header>
+
+  <div class="npc-main-container">
+    {{#each system.npcStats as |stat key|}}
+    <div class="npc-stat-line">
+      <input type="text" name="system.npcStats.{{key}}.name" value="{{stat.name}}" class="npc-stat-name" />
+
+      <div class="npc-dots-container">
+        {{#numLoop10 stat.value key}}
+          <span class="dot npc-dot {{class}}" data-key="{{key}}" data-index="{{index}}"></span>
+        {{/numLoop10}}
+      </div>
+
+      <div class="npc-roll-value npc-roll" data-key="{{key}}">
+        {{stat.value}}
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</form>

@@ -1,0 +1,26 @@
+{
+  "id": "adw",
+  "title": "A Dirty World",
+  "description": "Unofficial system for ORE Noir",
+  "background": "systems/adw/assets/images/bg.webp",
+  "version": "1.0.0",
+  "manifest": "",
+  "download": "",
+  "authors": [{ "name": "Ratbird" }],
+  "esmodules": ["adw.mjs"],
+  "styles": ["adw.css"],
+  "packs": [],
+  "compatibility": { "minimum": "12", "verified": "13" },
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    },
+    {
+      "lang": "ru",
+      "name": "Russian",
+      "path": "lang/ru.json"
+    }
+  ]
+}
