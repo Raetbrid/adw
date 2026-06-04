@@ -5,7 +5,7 @@
   "background": "systems/adw/assets/images/bg.webp",
   "version": "1.0.0",
   "manifest": "https://raw.githubusercontent.com/Raetbrid/adw/main/system.json",
-  "download": "",
+  "download": "https://github.com/Raetbrid/adw/releases/download/v1/adw.zip",
   "authors": [{ "name": "Ratbird" }],
   "esmodules": ["adw.mjs"],
   "styles": ["adw.css"],
