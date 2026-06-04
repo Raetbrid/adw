@@ -1,4 +1,4 @@
-\# A Dirty World for Foundry VTT
+# A Dirty World for Foundry VTT
 
 An unofficial implementation of Greg Stolze's \*A Dirty World\* role-playing game system for Foundry VTT.
 
