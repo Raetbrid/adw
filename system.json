@@ -4,7 +4,7 @@
   "description": "Unofficial system for ORE Noir",
   "background": "systems/adw/assets/images/bg.webp",
   "version": "1.0.0",
-  "manifest": "",
+  "manifest": "https://raw.githubusercontent.com/Raetbrid/adw/main/system.json",
   "download": "",
   "authors": [{ "name": "Ratbird" }],
   "esmodules": ["adw.mjs"],
