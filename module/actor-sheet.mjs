@@ -63,7 +63,7 @@ export class ADWActorSheet extends ActorSheet {
       return;
     }
 
-    html.find('.rollable').on('mousedown', ev => {
+    html.find('.rollable').on('mousedown', async ev => {
       if (ev.button === 2) return this._clearSelection();
 
       const prop = ev.currentTarget.dataset.prop;
@@ -76,7 +76,7 @@ export class ADWActorSheet extends ActorSheet {
       }
 
       if (this.selected.id && this.selected.quality) {
-        this._onRoll();
+        await this._onRoll();
         this._clearSelection();
       } else {
         this.render();
@@ -124,7 +124,7 @@ export class ADWActorSheet extends ActorSheet {
     if (injectedDie !== null) results.push(injectedDie);
 
     const label = `${game.i18n.localize("ADW.Stats."+id.charAt(0).toUpperCase()+id.slice(1))} + ${game.i18n.localize("ADW.Stats."+quality.charAt(0).toUpperCase()+quality.slice(1))}`;
-    this._renderOreChat(results, label, mods.calledShotActive ? ` (Called ${mods.calledShotValue})` : "", pool, r);
+    await this._renderOreChat(results, label, mods.calledShotActive ? ` (Called ${mods.calledShotValue})` : "", pool, r);
   }
   
   async _onNpcRoll(pool, label) {
@@ -132,10 +132,15 @@ export class ADWActorSheet extends ActorSheet {
     let r = new Roll(`${pool}d10`);
     await r.evaluate();
     const results = r.terms[0].results.map(d => d.result);
-    this._renderOreChat(results, label, "", pool, r);
+    await this._renderOreChat(results, label, "", pool, r);
   }
 
-  _renderOreChat(results, label, sublabel, pool, rollObj) {
+  async _renderOreChat(results, label, sublabel, pool, rollObj) {
+    if (pool > 0) {
+      const diceSound = CONFIG.sounds.dice || "sounds/dice.wav";
+      AudioHelper.play({ src: diceSound, volume: 0.8 }, false);
+    }
+
     const counts = {};
     results.forEach(num => counts[num] = (counts[num] || 0) + 1);
     let sets = []; let loose = [];
@@ -172,12 +177,20 @@ export class ADWActorSheet extends ActorSheet {
     }
     chatHtml += `</div>`;
 
-    ChatMessage.create({
+    const messageData = {
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       content: chatHtml,
-      roll: pool > 0 ? rollObj : null,
-      type: CONST.CHAT_MESSAGE_TYPES.ROLL
-    });
+      rolls: (pool > 0 && rollObj) ? [rollObj] : [],
+      sound: (pool > 0) ? (CONFIG.sounds.dice || "sounds/dice.wav") : null
+    };
+
+    if (CONST.CHAT_MESSAGE_STYLES) {
+      messageData.style = CONST.CHAT_MESSAGE_STYLES.ROLL;
+    } else if (CONST.CHAT_MESSAGE_TYPES) {
+      messageData.type = CONST.CHAT_MESSAGE_TYPES.ROLL;
+    }
+
+    await ChatMessage.create(messageData);
   }
 
   async _onSelectProfession() {
