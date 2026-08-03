@@ -135,12 +135,7 @@ export class ADWActorSheet extends ActorSheet {
     await this._renderOreChat(results, label, "", pool, r);
   }
 
-  async _renderOreChat(results, label, sublabel, pool, rollObj) {
-    if (pool > 0) {
-      const diceSound = CONFIG.sounds.dice || "sounds/dice.wav";
-      AudioHelper.play({ src: diceSound, volume: 0.8 }, false);
-    }
-
+async _renderOreChat(results, label, sublabel, pool, rollObj) {
     const counts = {};
     results.forEach(num => counts[num] = (counts[num] || 0) + 1);
     let sets = []; let loose = [];
@@ -181,7 +176,7 @@ export class ADWActorSheet extends ActorSheet {
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
       content: chatHtml,
       rolls: (pool > 0 && rollObj) ? [rollObj] : [],
-      sound: (pool > 0) ? (CONFIG.sounds.dice || "sounds/dice.wav") : null
+      sound: (pool > 0) ? CONFIG.sounds.dice : null
     };
 
     if (CONST.CHAT_MESSAGE_STYLES) {
